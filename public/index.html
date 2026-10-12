@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <meta charset="UTF-8" />
+
+    <title>K&amp;G Arcade</title>
+    <meta name="theme-color" content="#10171d">
+    <meta name="description" content="An alien abduction, 25 mini-games, and a little PocketPC history. Play the original 2004 K&amp;G Arcade in your browser.">
+
+    <link rel="stylesheet" type="text/css" href="./css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+
+    <script type="text/javascript" src="./lib/phaser.js"></script>
+
+    <script type="text/javascript" src="./js/assets.js"></script>
+    <script type="text/javascript" src="./js/main.js"></script>
+    <script type="text/javascript" src="./js/Oasis.js"></script>
+    <script type="text/javascript" src="./js/Surface.js"></script>
+    <script type="text/javascript" src="./js/BitmapFont.js"></script>
+    <script type="text/javascript" src="./js/GameScene.js"></script>
+    <script type="text/javascript" src="./js/MiniGameScene.js"></script>
+    <script type="text/javascript" src="./js/CutScene.js"></script>
+    <script type="text/javascript" src="./js/DeviceControls.js"></script>
+
+    <script type="text/javascript" src="./js/PreloadScene.js"></script>
+    <script type="text/javascript" src="./js/IntroOmnytexScene.js"></script>
+    <script type="text/javascript" src="./js/IntroCrackheadScene.js"></script>
+    <script type="text/javascript" src="./js/TitleSequenceScene.js"></script>
+    <script type="text/javascript" src="./js/MainMenuScene.js"></script>
+    <script type="text/javascript" src="./js/NewGameTypeScene.js"></script>
+    <script type="text/javascript" src="./js/InstructionsScene.js"></script>
+    <script type="text/javascript" src="./js/OptionsScene.js"></script>
+    <script type="text/javascript" src="./js/CreditsScene.js"></script>
+    <script type="text/javascript" src="./js/HighScoresScene.js"></script>
+    <script type="text/javascript" src="./js/ExitingScene.js"></script>
+    <script type="text/javascript" src="./js/NewAdventureScene.js"></script>
+    <script type="text/javascript" src="./js/PlayerDiedScene.js"></script>
+    <script type="text/javascript" src="./js/WinScene.js"></script>
+    <script type="text/javascript" src="./js/FinalScoreScene.js"></script>
+    <script type="text/javascript" src="./js/WalkingAroundTheShipScene.js"></script>
+    <script type="text/javascript" src="./js/CharacterInteractionScene.js"></script>
+    <script type="text/javascript" src="./js/TestCardScene.js"></script>
+
+    <script type="text/javascript" src="./js/minigames/FlightOfDoomScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/ADayInTheStrifeScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/CopyCatScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/CosmicSquirrelScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/TheRedeyeOrderScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/AlienBabbleScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/FarOutFowlScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/DefendohScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/RefluxiveScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/DeathTrapScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/AntigravitatorScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/InMemoriaScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/ReluctantHeroScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/ConquerrorScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/EngineerScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/VirusScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/FfopirSirtetPaehcScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/GluttonScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/LeparLandScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/TheEscapeScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/TheBogazDerbyScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/SquishemScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/TroubleInVectropolisScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/MuncherDudeScene.js"></script>
+    <script type="text/javascript" src="./js/minigames/SonOfEliminatorScene.js"></script>
+
+    <script type="text/javascript" src="./js/page.js" defer></script>
+
+  </head>
+
+  <body>
+
+    <a class="skipLink" href="#player">Skip to the game</a>
+    <div class="page">
+      <main>
+        <section class="hero" aria-labelledby="pageTitle">
+          <div class="heroIntro">
+            <p class="eyebrow"><span class="statusDot" aria-hidden="true"></span> FROM THE POCKETPC ARCHIVES · 2004</p>
+            <h1 id="pageTitle">K&amp;G<br><span>Arcade</span></h1>
+            <p class="tagline">Two aliens. One abduction.<br>Twenty-five mini-games.</p>
+            <p class="introText">Krelmac and Gentoo are back, and this time they have abducted you. Play your way
+              through their ship, one mini-game at a time, in the hopes of escaping, all inside a Casio E-125
+              PocketPC.</p>
+            <div class="heroActions">
+              <a class="playLink" href="#player">Play the game <span aria-hidden="true">↓</span></a>
+              <a class="storyLink" href="#story">The backstory <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="gameCredits">
+              <span class="eyebrow">A GAME BY</span>
+              <p>Frank Zammetti <span>&amp;</span> Anthony Volpe</p>
+            </div>
+          </div>
+          <section class="player" id="player" aria-label="Play K&amp;G Arcade" tabindex="-1">
+            <div class="playerToolbar">
+              <span class="playerLabel"><span class="statusDot" aria-hidden="true"></span> PLAY THE ORIGINAL</span>
+              <div class="sizeControl" role="group" aria-label="Game display size">
+                <button type="button" data-game-size="1" aria-pressed="true">1× <span class="srOnly">size</span></button>
+                <button type="button" data-game-size="2" aria-pressed="false">2× <span class="srOnly">size</span></button>
+              </div>
+            </div>
+            <div class="deviceViewport" id="deviceViewport">
+              <div id="outerContainer" class="outerContainer">
+                <img id="background" src="./img/imgCasioE125Frame.png" alt="Casio E-125 PocketPC" width="348" height="532">
+                <div id="container" class="container"></div>
+                <div id="loadingOverlay" class="loadingOverlay" role="status">...loading...</div>
+              </div>
+            </div>
+            <p class="playHint">Click or tap the screen to play.</p>
+            <p class="sizeHint">Arrow keys move, Space is ACTION and Esc is COMMAND, or use the device's disc and
+              buttons.</p>
+            <p class="sizeHint">Larger sizes fit to your screen.</p>
+          </section>
+        </section>
+        <section class="storySection" id="story" aria-labelledby="storyTitle">
+          <div class="storyHeading">
+            <p class="eyebrow">BEHIND THE ARCADE</p>
+            <h2 id="storyTitle">The K&amp;G<br>Arcade Story</h2>
+            <p>The K&G Arcade story,<br>as told by Frank Zammetti.</p>
+            <aside class="timeCapsule">
+              <span aria-hidden="true">✳</span>
+              <p>A humor time capsule</p>
+              <p>Some of the humor in this game has NOT aged well, and this port is pretty close to 100% faithful.
+                So, you've been warned.</p>
+            </aside>
+          </div>
+          <div class="storyText">
+            <p>In 2004, my friend Anthony Volpe and I were thinking about following up on the rousing success (ahem,
+              sorry, that's a weird way to spell "abject failure") of our PocketPC game
+              <a href="https://www.zammetti.com/invasion_trivia">Invasion: Trivia!</a>.  We had two characters we
+              liked in Krelmac and Gentoo, so the natural question was what game can we make with them?</p>
+            <p>I remembered a game from the Commodore 64 days that I always loved called Lazy Jones.  It was frankly
+              kind of a fever dream where you run around a 2D funhouse, dodging waiters and their carts and other things,
+              looking for doors.  Behind the doors were all sorts of weird little mini-games.  I remember one, for
+              example, where you played the part of a fork... yeah, the thing you eat with... and had to launch
+              yourself at a turkey.  The obstacle to your goal?  A telephone that flew around.</p>
+            <p>Like I said: fever dream!</p>
+            <p>But, it was also exactly the kind of thing Anthony and I would have come up with.  So, we decided
+              to...ahem... take inspiration from... Lazy Jones.  We'd make a game where Krelmac and Gentoo abduct
+              you, and you'd have to go through their ship playing mini-games in the hopes of escaping.  Not quite
+              as far out there as Lazy Jones I guess, but good enough.</p>
+            <p>So, I got to work on the coding, while Anthony worked up the graphics.  I think we banged the entire
+              game out in about two months start to finish, including cut scenes and voice work, and 25 mini-games.
+              These games took... again, AHEM... "inspiration"... from lots of games we love.  Frogger became Cosmic
+              Squirrel.  Kaboom! became Far Out Fowl.  Space Invaders became A Day In The Strife.  And so on.</p>
+            <p>On April 6, 2004, K&amp;G Arcade released to PocketPC owners worldwide.  I forget the asking price
+              frankly, but I think it was something like $4.99 or so.  Well, we wound up making MAYBE $250 total
+              from it over the course of a few months.</p>
+            <p>So, you know, just like Invasion: Trivia!, we had another total success on our hands.</p>
+            <p>As with Invasion: Trivia!, we had a lot of fun making this game, so it doesn't feel like it was a failure
+              at all.  I still have very fond memories of recording the voiceovers with Anthony, of going
+              back-and-forth on the scripts... oh, and it is at this point that I really need to mention that some
+              of the humor in this game has NOT aged well.  But, as with Invasion: Trivia!, I made this port pretty
+              close to 100% faithful.  In fact, the only changes I made were some outright bugs that would have
+              caused crashes even on the original (apologies to anyone who DID buy it almost 25 years ago!).  So,
+              you've been warned.</p>
+            <p>A final technical note: this port was 100% vibe-coded with Claude.  As opposed to Invasion: Trivia!,
+              where I started out hand-porting it, and got about 50% of the way before AI got good enough to help me
+              finish, K&amp;G Arcade was start to finish done with AI and I honestly haven't even looked at the
+              code.  That's not generally how I work with AI, but given what this is it doesn't bother me one bit.
+              It ALSO doesn't bother me one bit that it took a grand total of about 8 hours start to finish.  Yes,
+              Claude was able to understand a nearly 25-year old C++ codebase that used a defunct library
+              (GAPIDraw), as well as a custom cutscene engine, and was able to get this working pretty flawlessly
+              with very little prompting from me, even pointing out things I had botched back then.  The only thing
+              of note I gave it was the Invasion: Trivia! port, telling it to use it as an example and guide for how
+              to do this and generally structure things.  Seriously impressive what it was able to pull off if you
+              ask me.  What we're getting from AI nowadays is pretty astounding.  And yes, I share all the same
+              worries about it in terms of what it means for coders, what it means for the workforce, what it means
+              for the environment, what it means in legal terms, and so on and so on.  There's A LOT to be worried
+              about.  But, at the same time, as someone who has been a technologist for over 50 years now, I can't
+              help but kinda love some of the goodness we also undoubtedly can get from it.  And a port of a nearly
+              25-year old game of mine is definitely on the list.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+  </body>
+
+</html>

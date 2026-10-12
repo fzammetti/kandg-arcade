@@ -1,0 +1,195 @@
+:root {
+  color-scheme: dark;
+  --background: #10171d;
+  --text: #edf0e9;
+  --muted: #a4b0b6;
+  --accent: #c4ee91;
+  --line: #303c42;
+  --device-width: 348px;
+  --player-width: 444px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-width: 280px;
+  background:
+    radial-gradient(ellipse at 80% 16%, #c4ee9109, transparent 45%),
+    radial-gradient(#ffffff12 0.7px, transparent 0.7px) 0 0 / 28px 28px;
+  line-height: 1.6;
+}
+a { color: inherit; text-underline-offset: 5px; }
+a:hover { color: var(--accent); }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+::selection { background: var(--accent); color: var(--background); }
+.page { width: min(1360px, calc(100% - 96px)); margin: 0 auto; }
+.hero {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(0, var(--player-width));
+  align-items: start;
+  gap: clamp(32px, 5vw, 96px);
+  padding: 64px 0 80px;
+}
+.heroIntro { padding-top: 34px; }
+.eyebrow, .playerLabel {
+  font: 600 11px/1.6 Consolas, "Courier New", monospace;
+  letter-spacing: 1.5px;
+}
+.eyebrow { color: var(--accent); margin: 0 0 24px; }
+.statusDot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.eyebrow .statusDot { margin-right: 8px; }
+h1 { margin: 0 0 28px; font-size: clamp(60px, 6.6vw, 96px); letter-spacing: -5px; line-height: 0.98; }
+h1 span { color: var(--accent); }
+.tagline { font-size: clamp(20px, 2vw, 26px); line-height: 1.4; letter-spacing: -0.5px; margin: 0 0 20px; }
+.introText { max-width: 390px; color: var(--muted); font-size: 16px; margin: 0 0 28px; }
+.heroActions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px; }
+.playLink {
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--background);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.playLink:hover { background: #d6f5b2; color: var(--background); }
+.playLink span { margin-left: 16px; }
+.storyLink { font-size: 13px; text-decoration: none; border-bottom: 1px solid #c4ee9166; padding-bottom: 8px; }
+.storyLink span { color: var(--accent); margin-left: 14px; }
+.gameCredits { margin-top: 52px; }
+.gameCredits .eyebrow { color: var(--muted); font-size: 10px; }
+.gameCredits p { margin: 6px 0 0; font-size: 13px; }
+.gameCredits p span { color: var(--muted); margin: 0 4px; }
+.player {
+  min-width: 0;
+  padding: 20px 32px 24px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: radial-gradient(ellipse at 50% 45%, #c4ee9110, transparent 65%), #172127;
+  box-shadow: 0 24px 80px #00000024;
+  scroll-margin-top: 24px;
+}
+.playerToolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 24px; }
+.playerLabel { font-size: 10px; letter-spacing: 1px; color: var(--muted); }
+.playerLabel .statusDot { margin-right: 6px; }
+.sizeControl { display: flex; padding: 4px; border: 1px solid var(--line); border-radius: 10px; background: #10171d; }
+.sizeControl button {
+  min-width: 44px;
+  min-height: 36px;
+  padding: 4px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.sizeControl button:hover { color: var(--text); background: #273339; }
+.sizeControl button[aria-pressed="true"] { background: var(--accent); color: #172127; }
+
+/* Reserve the scaled frame's space; keep the original screen coordinates intact inside it. */
+.deviceViewport {
+  width: min(100%, var(--device-width));
+  aspect-ratio: 348 / 532;
+  margin: 0 auto;
+  overflow: hidden;
+  filter: drop-shadow(0 16px 18px #00000040);
+}
+.outerContainer { position: relative; width: 348px; height: 532px; transform-origin: top left; }
+
+/* The picture of the device doubles as the touch controls (see js/DeviceControls.js).  These settings stop the
+   browser from reacting to touches on it in its own ways: scrolling or zooming the page when a finger is dragged
+   or double-tapped on it, selecting it, dragging it, or popping up a "save image" menu when it is held. */
+#background {
+  display: block;
+  width: 348px;
+  height: 532px;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+.container, .loadingOverlay { position: absolute; left: 51px; top: 57px; width: 240px; height: 320px; }
+.container canvas { display: block; }
+.loadingOverlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000dd;
+  color: var(--accent);
+  font-size: 15px;
+  z-index: 3;
+  pointer-events: none;
+}
+.playHint { font-size: 12px; text-align: center; color: var(--muted); margin: 24px 0 0; }
+.sizeHint { font-size: 11px; text-align: center; color: var(--muted); margin: 4px 0 0; }
+.page[data-game-size="2"] { --device-width: 696px; --player-width: 762px; }
+.storySection {
+  border-top: 1px solid var(--line);
+  padding: 64px 0 72px;
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(40px, 7vw, 120px);
+  scroll-margin-top: 32px;
+}
+.storyHeading h2 { font-size: clamp(32px, 3.5vw, 48px); line-height: 1.15; letter-spacing: -1.5px; margin: 0 0 20px; }
+.storyHeading > p:not(.eyebrow) { font-size: 14px; color: var(--muted); }
+.timeCapsule {
+  max-width: 290px;
+  margin-top: 36px;
+  padding: 20px 24px;
+  border-left: 2px solid var(--accent);
+  background: #c4ee9107;
+}
+.timeCapsule > span { color: var(--accent); font-size: 24px; }
+.timeCapsule p { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
+.timeCapsule p:first-of-type { color: var(--text); font-weight: 600; }
+.storyText { max-width: 680px; font-size: 16px; line-height: 1.85; color: #bcc6ca; }
+.storyText p { margin: 0 0 24px; }
+.storyText p:first-child { color: var(--text); font-size: 18px; }
+.storyText p:last-child { margin-bottom: 0; }
+.storyText a { color: var(--accent); }
+.srOnly, .skipLink:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.skipLink:focus { position: absolute; z-index: 5; top: 12px; left: 12px; padding: 12px; background: var(--background); }
+
+@media (max-width: 1000px) {
+  .page { width: calc(100% - 48px); }
+  .hero { gap: 32px; }
+  .player { padding-left: 20px; padding-right: 20px; }
+  h1 { letter-spacing: -3px; }
+  .page[data-game-size="2"] .hero { grid-template-columns: 1fr; }
+  .page[data-game-size="2"] .heroIntro { max-width: 600px; }
+  .page[data-game-size="2"] .player { width: min(100%, 762px); justify-self: center; }
+}
+@media (max-width: 720px) {
+  .page { width: calc(100% - 32px); }
+  .hero { grid-template-columns: 1fr; gap: 36px; padding: 36px 0 48px; }
+  .heroIntro { padding-top: 0; }
+  .eyebrow { font-size: 10px; letter-spacing: 1px; margin-bottom: 20px; }
+  h1 { font-size: clamp(58px, 14vw, 84px); margin-bottom: 24px; }
+  .tagline { font-size: 22px; }
+  .introText { max-width: 480px; font-size: 15px; }
+  .gameCredits { margin-top: 32px; }
+  .player { width: min(100%, 444px); justify-self: center; padding: 16px 12px 20px; border-radius: 18px; }
+  .playerToolbar { margin-bottom: 20px; gap: 8px; }
+  .playerLabel { font-size: 9px; letter-spacing: 0.5px; }
+  .sizeControl button { min-height: 40px; }
+  .storySection { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 48px; }
+  .timeCapsule { max-width: none; margin-top: 24px; }
+  .storyText { font-size: 15px; line-height: 1.8; }
+  .storyText p:first-child { font-size: 17px; }
+}
